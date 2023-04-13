@@ -44,7 +44,7 @@ void All() {
 	xx.close();
 
 	ifstream xx("mybin_4.dat", ios::binary | ios::in);
-	xx.read(header, 36 * sizeof(char));
+	xx.write(header, 36 * sizeof(char));
 	xx.close();
 
 	cout << " <chek numbers>" << endl;
