@@ -20,12 +20,24 @@ int main() {
 
 	fstream file;
 	file.open("mybin.dat", ios::binary | ios::out);
+
+	if (!file) {
+		cout << "file not write" << endl;
+		return 99;
+	}
+
 	file.write((char*)&num, 4);
 	file.write((char*)data1, sizeof(int) * 5);
 	file.write((char*)data2, sizeof(float) * 3);
 	file.close();
 
 	file.open("mybin.dat", ios::binary | ios::in);
+
+	if (!file) {
+		cout << "file not write" << endl;
+		return 99;
+	}
+
 	file.read((char*)&num, 4);
 	file.read((char*)data1, sizeof(int) * 5);
 	file.read((char*)data2, sizeof(float) * 3);
