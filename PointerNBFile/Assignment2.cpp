@@ -3,32 +3,29 @@
 using namespace std;
 
 int main() {
-	char header[44];
-	short data[1000];
-	unsigned int* samplerate;
+    char header[44];
+    short data[1000];
+    unsigned int* samplerate;
 
-	ifstream aaa;
-	aaa.open("BeatlesLetItBewav_30s.wav", ios::binary | ios::in);
-	if (!aaa) return 123;
-	
-	aaa.read(header, 44);
+    ifstream musicfile;
+    musicfile.open("musicfile.wav", ios::binary | ios::in);
+    if (!musicfile) return 777;
+    musicfile.read(header, 44);
+    for (int i = 0; i < 1000; i++) {
+        musicfile.read((char*)data, 2000);
+    }
+    samplerate = (unsigned int*)(header + 24);
 
-	for (int i = 0; i < 1000; i++) {
-		aaa.read((char*)data, 2000);
-	}
+    cout << "samplerate  " << *samplerate << endl;
 
-	samplerate = (unsigned int*)(header + 24);
+    musicfile.close();
 
-	cout << "samplerate  " << *samplerate << endl;
+    ofstream abc("Data.txt");
+    float dt = 1.0 / *samplerate;
+    for (int i = 0; i < 500; i++) {
+        abc << i * dt << " " << data[i * 2] << " " << data[i * 2 + 1] << endl;
+    }
+    abc.close();
 
-	aaa.close();
-
-	ofstream bbb("Data.txt");
-	float dt = 1. / *samplerate;
-	for (int j = 0; j < 500; j++) {
-		bbb << j * dt << " " << data[j * 2] << " " << data[j * 2 + 1] << endl;
-	}
-	bbb.close();
-
-	return 0;
+    return 777;
 }
