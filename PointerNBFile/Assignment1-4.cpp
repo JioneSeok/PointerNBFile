@@ -42,15 +42,6 @@ void All() {
 	}
 	xx.write(header, 36 * sizeof(char));
 	xx.close();
-
-	ifstream xx("mybin_4.dat", ios::binary | ios::in);
-	xx.write(header, 36 * sizeof(char));
-	xx.close();
-
-	cout << " <chek numbers>" << endl;
-	for (int i = 0; i < 9; i++) {
-		cout << i << ": " << data[i] << endl;
-	}
 }
 int main() {
 	All();
