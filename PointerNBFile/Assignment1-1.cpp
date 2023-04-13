@@ -11,7 +11,7 @@ int main() {
 	float data2[3];
 
 	for (int i = 0; i < 5; i++) {
-		data1[i] = number1[i] * i;
+		data1[i] = number1[i] * 5;
 	}
 
 	for (int i = 0; i < 3; i++) {
@@ -43,6 +43,14 @@ int main() {
 	file.read((char*)data2, sizeof(float) * 3);
 	file.close();
 
-
-
+	cout << " <chek number1>" << endl;
+	cout << " 1" << " " << num << endl;
+	cout << " <check number2>" << endl;
+	for (int i = 0; i < 5; i++) {
+		cout << " 2." << i << " " << data1[i] << endl;
+	}
+	cout << " <check number3>" << endl;
+	for (int i = 0; i < 3; i++) {
+		cout << " 3." << i << " " << data2[i] << endl;
+	}
 }

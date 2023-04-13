@@ -26,7 +26,20 @@ int main() {
 
     fstream file;
     file.open("mybin.dat", ios::binary | ios::out);
+
+    if (!file) {
+        cout << "file not write" << endl;
+        return 99;
+    }
+
     file.write((char*)data, sizeof(float) * 9);
     file.close();
 
+    file.read((char*)data, sizeof(float) * 9);
+    file.close();
+
+    cout << " <chek numbers>" << endl;
+    for (int i = 0; i < 9; i++) {
+        cout << i << ": " << data[i] << endl;
+    }
 }

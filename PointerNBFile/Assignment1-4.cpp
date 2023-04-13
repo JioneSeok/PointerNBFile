@@ -21,6 +21,7 @@ void sq(float* data) {
 void All() {
 	char* header;
 	header = new char[36];
+
 	ofstream xx("mybin_4.dat", ios::binary | ios::out);
 	int* first;
 	first = (int*)header;
@@ -41,8 +42,19 @@ void All() {
 	}
 	xx.write(header, 36 * sizeof(char));
 	xx.close();
+
+	ifstream xx("mybin_4.dat", ios::binary | ios::in);
+	xx.read(header, 36 * sizeof(char));
+	xx.close();
+
+	cout << " <chek numbers>" << endl;
+	for (int i = 0; i < 9; i++) {
+		cout << i << ": " << data[i] << endl;
+	}
 }
 int main() {
 	All();
 	return 1;
+
+
 }

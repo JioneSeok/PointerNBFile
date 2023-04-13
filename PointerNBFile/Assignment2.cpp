@@ -10,7 +10,9 @@ int main() {
 	ifstream aaa;
 	aaa.open("BeatlesLetItBewav_30s.wav", ios::binary | ios::in);
 	if (!aaa) return 123;
+	
 	aaa.read(header, 44);
+
 	for (int i = 0; i < 1000; i++) {
 		aaa.read((char*)data, 2000);
 	}
